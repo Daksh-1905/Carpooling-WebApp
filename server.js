@@ -3,18 +3,23 @@ import morgan from "morgan";
 import cors from 'cors'
 import bodyParser  from "body-parser";
 import dotenv from "dotenv";
+import connectDb from "./config/db.js";
+import authRoutes from './routes/authRoutes.js'
 
-//auth routes
 
 
-//dotenv
+// Configuring dotenv(global variables)
 dotenv.config();
 
+//database connection
+connectDb();
 
 //rest object
 const app=express();
 
 
+//Routes
+app.use('/api/v1/auth',authRoutes);
 
 
 //middleware
