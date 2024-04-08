@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import IMAGE from "./bground_image.png";
 import "./App.css";
-import TravelInfo from "./components/TravelInfo";
-import MiddleFeatures from "./components/MiddleFeatures";
+import HomePage from "./components/HomePage";
 
 
 const App = () => {
@@ -12,7 +11,7 @@ const App = () => {
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
-      document.body.style.backgroundColor = "black";
+      document.body.style.backgroundColor = "#212529";
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
@@ -25,11 +24,7 @@ const App = () => {
         mode={mode}
         toggleMode={toggleMode}
       />
-      <div className="image-height">
-        <img src={IMAGE} alt="..." />
-      </div>
-      <TravelInfo />
-      <MiddleFeatures mode={mode} />
+      <HomePage mode={mode} />
     </>
   );
 };

@@ -1,15 +1,28 @@
 .image-height{
   width: 100vw;
-  height: 25vw;
-}
-.image-height img{
-  background-size: cover;
-  height: 100%;
-  width: 100%;
+  height: 20vw;
+  object-fit: cover;
 }
 .middle-box{
-  margin-top: 6vw;
+  display: flex;
   width: 100vw;
   height: 25vw;
-  background-color: rgb(18, 94, 121);
+}
+.learn-more-1{
+  background-color: white;
+  color: black;
+  border-radius: 1.5vw;
+  padding: 0.8vw;
+}
+.learn-more-1:hover{
+  background-color: rgb(189, 186, 186);
+}
+.learn-more-2{
+  background-color: rgb(26, 128, 165);
+  color: white;
+  border-radius: 1.5vw;
+  padding: 0.8vw;
+}
+.learn-more-2:hover{
+  background-color: rgb(14, 71, 92);
 }

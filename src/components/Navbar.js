@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MiddleFeatures from "./MiddleFeatures";
-import Bus from "./Bus";
 
 const Navbar = (props) => {
   return (
