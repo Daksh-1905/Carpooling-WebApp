@@ -9,19 +9,15 @@ const Register = () => {
     const [password, setPassword] = useState('');
 
     const handleSubmit = async(e) => {
+      e.preventDefault();
         // Handle sign-up logic here
         try {
           const res = await axios.post('http://localhost:8080/api/v1/auth/register',{name,email,password});
-          if(res.data.success){
-              console.log("Succesfully registered!!");
-          }
+          console.log(res.status,res);
       } catch (error) {
           console.log(error);
           console.log(error.message);
       }
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Password:', password);
     };
 
     return (
@@ -123,7 +119,7 @@ const Register = () => {
                     </form>
                     <div className="mt-3 space-y-3">
                     <button
-                        type="button"
+                        type="submit"
                         className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
                     >
                         <span className="mr-2 inline-block">

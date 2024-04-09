@@ -18,15 +18,18 @@ export const registerController = async(req,res)=>{
                 message:"User already register !! "
             })
         }
+        else{
 
-        const hashedPassword = await hashPassword(password)
-
-        const new_user = await usermodel({name,email,password:hashedPassword}).save();
-        return res.status(201).send({
-            success:true,
-            message:"User succesfully registered !!"
-        })
-
+            const hashedPassword = await hashPassword(password);
+            console.log("INITIALISE");
+            const new_user = await usermodel({name,email,password:hashedPassword}).save();
+            console.log("NEW USER FOUND!!");
+            return res.status(201).send({
+                success:true,
+                message:"User succesfully registered !!",
+                new_user
+            })
+        }
     } catch (error) {
         return res.status(500).send({
             success:false,

@@ -4,11 +4,11 @@ import axios from 'axios';
 // import { Link ,useNavigate} from 'react-router-dom';
 
 const Login = () => {
-    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleUsernameChange = (e) => {
-        setName(e.target.value);
+    const handleUseremailChange = (e) => {
+        setEmail(e.target.value);
     };
 
     const handlePasswordChange = (e) => {
@@ -19,7 +19,7 @@ const Login = () => {
         e.preventDefault();
         // Add your login logic here
         try {
-            const res = await axios.post('/api/v1/auth/login',{name,password});
+            const res = await axios.post('http://localhost:8080/api/v1/auth/login',{email,password});
             if(res.data.success){
                 console.log("Succesfully registered!!");
             }
@@ -27,7 +27,7 @@ const Login = () => {
             console.log(error);
 
         }
-        console.log('Username:', name);
+        console.log('Useremail:', email);
         console.log('Password:', password);
     };
 
@@ -39,7 +39,7 @@ const Login = () => {
                     <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl">
                     Sign in
                     </h2>
-                    <p className="mt-2 text-sm text-gray-600">
+                    <p classemail="mt-2 text-sm text-gray-600">
                     Don&#x27;t have an account?{" "}
                     <Link
                         to="/signup"
@@ -48,41 +48,41 @@ const Login = () => {
                         Create a free account
                     </Link>
                     </p>
-                    <form onSubmit={handleSubmit} className="mt-8">
-                    <div className="space-y-5">
+                    <form onSubmit={handleSubmit} classemail="mt-8">
+                    <div classemail="space-y-5">
                         <div>
-                        <label htmlFor="" className="text-base font-medium text-gray-900">
+                        <label htmlFor="" classemail="text-base font-medium text-gray-900">
                             {" "}
                             Email address{" "}
                         </label>
-                        <div className="mt-2">
+                        <div classemail="mt-2">
                             <input
-                            className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            classemail="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="email"
                             placeholder="Email"
-                            value={name}
-                            onChange={handleUsernameChange}
+                            value={email}
+                            onChange={handleUseremailChange}
                             />
                         </div>
                         </div>
                         <div>
-                        <div className="flex items-center justify-between">
-                            <label htmlFor="" className="text-base font-medium text-gray-900">
+                        <div classemail="flex items-center justify-between">
+                            <label htmlFor="" classemail="text-base font-medium text-gray-900">
                             {" "}
                             Password{" "}
                             </label>
                             <Link
                             to={'/regiter'}
                             title=""
-                            className="text-sm font-semibold text-black hover:underline"
+                            classemail="text-sm font-semibold text-black hover:underline"
                             >
                             {" "}
                             Forgot password?{" "}
                             </Link>
                         </div>
-                        <div className="mt-2">
+                        <div classemail="mt-2">
                             <input
-                            className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                            classemail="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="password"
                             placeholder="Password"
                             value={password}
@@ -93,7 +93,7 @@ const Login = () => {
                         <div>
                         <button
                             type="submit"
-                            className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                            classemail="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                             onClick={handleSubmit}
                         >
                             Get started{" "}
@@ -107,7 +107,7 @@ const Login = () => {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="ml-2"
+                            classemail="ml-2"
                             >
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
@@ -116,14 +116,14 @@ const Login = () => {
                         </div>
                     </div>
                     </form>
-                    <div className="mt-3 space-y-3">
+                    <div classemail="mt-3 space-y-3">
                     <button
-                        type="button"
-                        className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
+                        type="submit"
+                        classemail="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
                     >
-                        <span className="mr-2 inline-block">
+                        <span classemail="mr-2 inline-block">
                         <svg
-                            className="h-6 w-6 text-rose-500"
+                            classemail="h-6 w-6 text-rose-500"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             fill="currentColor"
@@ -136,9 +136,9 @@ const Login = () => {
                     </div>
                 </div>
                 </div>
-                <div className="h-full w-full flex items-start">
+                <div classemail="h-full w-full flex items-start">
                 <img
-                    className="mx-auto h-[75%] w-[90%] rounded-md object-cover mt-16"
+                    classemail="mx-auto h-[75%] w-[90%] rounded-md object-cover mt-16"
                     src="https://cdn.dribbble.com/users/1097584/screenshots/5667601/media/f2f87250f97723f9a2ea522d16189fce.jpg?resize=1200x900&vertical=center"
                     alt=""
                 />
