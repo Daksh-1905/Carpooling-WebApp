@@ -1,6 +1,7 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import TravelInfo_1 from "./TravelInfo_1.js";
 import TravelInfo_2 from "./TravelInfo_2.js";
+import toast from "react-hot-toast";
 
 const HomePage = (props) => {
   return (
@@ -14,14 +15,15 @@ const HomePage = (props) => {
       </div>
       <TravelInfo_1 />
       <div
-        className="container"
-        style={{ display: "flex", marginLeft: "13vw", marginTop: "7vw" }}
+        className="container bg-slate-300"
+        style={{ display: "flex",justifyContent:"space-evenly", marginTop: "7vw" }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
           <strong
             style={{
-              fontSize: "1.1vw",
+              fontSize: "1.2rem",
               color: "black",
+              fontWeight: "bold"
             }}
           >
             Your pick of rides at low prices
@@ -30,7 +32,8 @@ const HomePage = (props) => {
             style={{
               color: "black",
               marginTop: "0.3vw",
-              fontSize :"0.8rem"
+              fontSize: "0.8rem",
+              fontWeight: "bold"
             }}
           >
             No matter where you’re going, by bus or <br />
@@ -44,8 +47,9 @@ const HomePage = (props) => {
           <strong
             style={{
               marginLeft: "4vw",
-              fontSize: "1.1vw",
+              fontSize: "1.2rem",
               color: "black",
+              fontWeight: "bold"
             }}
           >
             Trust who you travel with
@@ -55,6 +59,8 @@ const HomePage = (props) => {
               marginLeft: "4vw",
               color: "black",
               marginTop: "0.3vw",
+              fontWeight: "bold",
+              fontSize: "0.8rem"
             }}
           >
             We take the time to get to know each of our <br />
@@ -69,8 +75,9 @@ const HomePage = (props) => {
           <strong
             style={{
               marginLeft: "4vw",
-              fontSize: "1.1vw",
+              fontSize: "1.2rem",
               color: "black",
+              fontWeight: "bold"
             }}
           >
             Scroll, click, tap and go!
@@ -80,6 +87,8 @@ const HomePage = (props) => {
               marginLeft: "4vw",
               color: "black",
               marginTop: "0.3vw",
+              fontWeight: "bold",
+              fontSize: "0.8rem"
             }}
           >
             Booking a ride has never been easier! <br />
@@ -98,19 +107,22 @@ const HomePage = (props) => {
           style={{ marginLeft: "10vw" }}
         />
         <div>
-          <h2 style={{ marginTop: "6vw", color: "white" }}>
+          <h2 style={{ marginTop: "6vw",marginBottom:"1vh", color: "white",fontSize:"1.2rem" }}>
             Help us keep you safe from scams
           </h2>
-          <p style={{ color: "white" }}>
+          <p className="slate-100" style={{ color: "white" ,fontWeight:"bold"}}>
             "At Carpool, safety is our top priority. While we strive to ensure
-            the security <br/>of our platform, we recognize the importance of being
-            prepared for potential <br/>scams. That's why we provide you with tips on
-            how to avoid and report fraudulent <br/>activities. By following our
-            guidelines, you can help us keep you safe while using our services."
+            the security <br />
+            of our platform, we recognize the importance of being prepared for
+            potential <br />
+            scams. That's why we provide you with tips on how to avoid and
+            report fraudulent <br />
+            activities. By following our guidelines, you can help us keep you
+            safe while using<br/> our services."
           </p>
           <button
             type="button"
-            className="btn btn-primary learn-more-1"
+            className="btn btn-primary learn-more-1 mt-2"
             style={{
               marginLeft: "11vw",
             }}
@@ -129,6 +141,7 @@ const HomePage = (props) => {
               marginTop: "6vw",
               color: `${props.mode === "light" ? "rgb(18, 94, 121)" : "white"}`,
               marginLeft: "14vw",
+              fontWeight: "bold"
             }}
           >
             Receive €25 in Carpool Bonus!
@@ -137,6 +150,7 @@ const HomePage = (props) => {
             style={{
               color: "black",
               marginLeft: "14vw",
+              fontWeight: "bold"
             }}
           >
             "Attention, drivers! Your good habits are paying off with the
@@ -185,6 +199,8 @@ const HomePage = (props) => {
             style={{
               marginLeft: "2vw",
               color: "black",
+              fontWeight: "1.1rem",
+              fontWeight: "bold"
             }}
           >
             "Whether it's a weekly reunion with a loved one or a monthly
@@ -192,9 +208,9 @@ const HomePage = (props) => {
             to a new European destination, Carpool buses offer convenient travel
             for <br />
             every occasion. With spacious accommodations for big families and
-            ample <br />luggage 
-            space, our service ensures a hassle-free journey to iconic cities
-            like Paris, <br />
+            ample <br />
+            luggage space, our service ensures a hassle-free journey to iconic
+            cities like Paris, <br />
             Amsterdam, and beyond."
           </p>
           <button

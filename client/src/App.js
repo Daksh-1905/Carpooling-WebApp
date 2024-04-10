@@ -12,6 +12,7 @@ import Homepage from "./pages/Homepage.js";
 import { useState } from "react";
 import Layout from "./Components/Layout/Layout.js";
 import { UserContextProvider } from "./Contexts/UserContext.js";
+import ForgotPassword from "./pages/Auth/ForgotPassword.js";
 
 axios.defaults.withCredentials = true;
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/publishHome" element={<PublishHome />} />
           <Route path="*" element={

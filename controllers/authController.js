@@ -47,8 +47,8 @@ export const loginController = async(req,res)=>{
         if(!password)return res.send({error:'Password is required'})
 
         //if existing user
-        const existingUser = await usermodel.findOne({email});
-        if(!existingUser){
+        const user = await usermodel.findOne({email});
+        if(!user){
             return res.status(404).send({
                 success:false,
                 message:"User Not register !! "
@@ -61,8 +61,10 @@ export const loginController = async(req,res)=>{
                 message:"Invalid Password"
             })
         }
+        console.log("TOKEN GENERATION");
         const token = await JWT.sign({_id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'});
-        return res.status(201).send({
+        console.log("GENERATED!!");
+        return res.status(200).send({
             success:true,
             message:"User succesfully registered !!",
             user:{
@@ -73,14 +75,46 @@ export const loginController = async(req,res)=>{
             token
         })
     } catch (error) {
-        
+        console.log(error);
     }
 }
 
-export const logoutController = async(req,res)=>{
+
+
+export const forgotPasswordController = async(req,res)=>{
     try {
-        
+        const {email,newPassword}=req.body;
+        console.log("HASHING");
+        if(!email){
+            res.status(400).send({
+                message:"Email is required",
+            })
+        }
+        if(!newPassword){
+            res.status(400).send({
+                message:"New Password is required",
+            })
+        }
+        //check
+        const user=await usermodel.findOne({email});
+        if(!user){
+            return res.status(404).send({
+                success:false,
+                message:"User Not found"
+            })
+        }
+        const hashed=await hashPassword(newPassword);
+        await usermodel.findOneAndUpdate(user._id,{password:hashed});
+        res.status(200).send({
+            success:true,
+            message:"password reset succesfully"
+        })
     } catch (error) {
-        
+        console.log(error);
+        res.status(500).send({
+            success:false,
+            message:"Something went wrong",
+            error
+        })
     }
 }

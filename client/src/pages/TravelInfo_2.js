@@ -11,7 +11,7 @@ const TravelInfo_2 = (props) => {
           flexDirection: "column",
         }}
       >
-        <h3 style={{ marginTop: "1vw", color: "white", marginLeft: "15vw" }}>
+        <h3 style={{ marginTop: "1vw", color: "white", marginLeft: "15vw",fontWeight:"bold",fontSize:"1.1rem" }}>
           {props.heading}
         </h3>
         <div
