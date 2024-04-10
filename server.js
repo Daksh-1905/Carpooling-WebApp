@@ -5,6 +5,7 @@ import bodyParser  from "body-parser";
 import dotenv from "dotenv";
 import connectDb from "./config/db.js";
 import authRoutes from './routes/authRoutes.js'
+import PublishRideRoute from "./routes/publishRideRoute.js";
 
 
 
@@ -28,6 +29,8 @@ app.use(morgan(('dev')));
 
 //Routes
 app.use('/api/v1/auth',authRoutes);
+app.use('/api/v1/publishRide',PublishRideRoute);
+
 
 app.get("/",(req,res)=>{
     res.send("Welcome to our bot.")

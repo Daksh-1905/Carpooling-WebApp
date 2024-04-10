@@ -23,9 +23,9 @@ function PickUp() {
             <div className='h-[90%] flex items-start  justify-center'>
                 <div className='w-screen mt-20 flex flex-col justify-center items-center'>
                     <h2 className='text-3xl mb-6 text-sky-800 font-bold'>Pick-Up</h2>
-                    <div className='flex'>
-                        <div className='bg-slate-200 h-10 rounded-l-md z-10 w-[3vw] flex items-center justify-center'><i className="fa-solid fa-magnifying-glass text-slate-500"></i></div>
-                        <input type="search" className='bg-slate-200 h-8 outline-none px-1 py-5 w-[37vw] rounded-r-md' onChange={filterCities}/>
+                    <div className='flex-row h-5'>
+                        <i className="fa-solid fa-magnifying-glass text-slate-900"></i>
+                        <input type="search" className='bg-slate-100 outline-none px-1 py-1 w-[37vw] rounded-r-md' onChange={filterCities}/>
                     </div>
                     <ul className='overflow-auto h-64 mt-6 custom-scrollbar'>
                         {filteredCities.map((city) => (

@@ -1,12 +1,17 @@
-import './App.css';
-import PickUp from './pages/publishRide/Pick';
-import DropOff from './pages/publishRide/Drop';
-import {Routes,Route} from "react-router-dom"
-import Register from './pages/Auth/Register.js';
-import Login from './pages/Auth/Login.js';
-import axios from 'axios'
-import DateTimePassengers from './pages/publishRide/dateTimePassengers.js';
-import PublishHome from './pages/publishRide/publishHome.jsx';
+import "./App.css";
+import PickUp from "./pages/publishRide/Pick.js";
+import DropOff from "./pages/publishRide/Drop";
+import RideContext from "./Contexts/RideContext.js";
+import { Routes, Route } from "react-router-dom";
+import Register from "./pages/Auth/Register.js";
+import Login from "./pages/Auth/Login.js";
+import axios from "axios";
+import DateTimePassengers from "./pages/publishRide/dateTimePassengers.js";
+import PublishHome from "./pages/publishRide/publishHome.js";
+import Homepage from "./pages/Homepage.js";
+import { useState } from "react";
+import Layout from "./Components/Layout/Layout.js";
+import { UserContextProvider } from "./Contexts/UserContext.js";
 
 axios.defaults.withCredentials = true;
 
@@ -22,11 +27,33 @@ function App() {
       document.body.style.backgroundColor = "white";
     }
   };
+  const [ride, setRide] = useState({
+    source: "",
+    destination: "",
+    arrival: "",
+    time: "",
+    passenger: "",
+  });
+
   return (
     <>
       <Routes>
-        <Route path='/register' element={<Register/>}/>
-        <Route path='/login' element={<Login/>}/>
+        <Route path="/" element={<Layout />}>
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/publishHome" element={<PublishHome />} />
+          <Route path="*" element={
+          <RideContext.Provider value={{ ride, setRide }}>
+            <Routes>
+              <Route path="/pick" element={<PickUp />} />
+              <Route path="/drop" element={<DropOff />} />
+              <Route path="/date-time" element={<DateTimePassengers />} />
+            </Routes>
+          </RideContext.Provider>
+        }/>
+        </Route>
       </Routes>
     </>
   );
