@@ -14,10 +14,10 @@ const rideSchema = new mongoose.Schema({
         required:[true,"Date is required"]
     },
     time: {
-        type:Date,
+        type:String,
         required: [true,"Time is required"]
     },
-    passenger: {
+    passengers: {
         type:Number,
         required:[true,"Passengers are required"]
     }

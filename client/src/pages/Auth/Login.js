@@ -26,7 +26,7 @@ const Login = () => {
                 console.log("Succesfully registered!!");
             }
             localStorage.setItem('authToken',token);
-            navigate('/homepage');
+            navigate('/');
         } catch (error) {
             console.log(error);
 

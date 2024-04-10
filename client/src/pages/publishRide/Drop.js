@@ -1,16 +1,16 @@
-import React from 'react'
-import { useState,useContext } from 'react'
+import React,{useContext} from 'react'
+import { useState } from 'react'
 import indianCities from '../../cities/indianCities'
 import "./publishRide.css"
-import RideContext from '../../Contexts/RideContext.js'
 import { Link } from 'react-router-dom'
+import RideContext from '../../Contexts/RideContext.js'
+
 
 function DropOff() {
 
     const [filteredCities, setFilteredCities] = useState([])
     const { ride, setRide } = useContext(RideContext);
     const [selectedCity,setSelectedCity] = useState("");
-
 
     const filterCities = (e) => {
         const searchValue = e.target.value
@@ -19,10 +19,12 @@ function DropOff() {
         })
         setFilteredCities(filteredVal);
     }
+
     const handleDropChange = (e) => {
-        setRide({...ride, source:e });
+        setRide({...ride, destination:e });
     };
 
+    // const navigate = useNavigate();
     return (
         <div className='h-screen w-screen flex-col'>
             <h1 className='h-[10%]'>FuFuCar</h1>
@@ -57,4 +59,4 @@ function DropOff() {
     )
 }
 
-export default DropOff
+export default DropOff;
