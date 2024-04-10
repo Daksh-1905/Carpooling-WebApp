@@ -5,13 +5,13 @@ import JWT from 'jsonwebtoken';
 
 export const registerController = async(req,res)=>{
     try {
-        const {Name,Email,Password} = req.body;
-        if(!Name)return res.send({error:'Name is required'})
-        if(!Email)return res.send({error:'Email is required'})
-        if(!Password)return res.send({error:'Password is required'})
+        const {name,email,password} = req.body;
+        if(!name)return res.send({error:'Name is required'})
+        if(!email)return res.send({error:'Email is required'})
+        if(!password)return res.send({error:'Password is required'})
 
         //if existing user
-        const existingUser = await usermodel.findOne({Email});
+        const existingUser = await usermodel.findOne({email});
         if(existingUser){
             return res.status(200).send({
                 success:true,
@@ -19,9 +19,9 @@ export const registerController = async(req,res)=>{
             })
         }
 
-        const hashedPassword = await hashPassword(Password)
+        const hashedPassword = await hashPassword(password)
 
-        const new_user = await usermodel({Name,Email,Password:hashedPassword}).save();
+        const new_user = await usermodel({name,email,password:hashedPassword}).save();
         return res.status(201).send({
             success:true,
             message:"User succesfully registered !!"
@@ -39,19 +39,19 @@ export const registerController = async(req,res)=>{
 
 export const loginController = async(req,res)=>{
     try {
-        const {Email,Password} = req.body;
-        if(!Email)return res.send({error:'Email is required'})
-        if(!Password)return res.send({error:'Password is required'})
+        const {email,password} = req.body;
+        if(!email)return res.send({error:'Email is required'})
+        if(!password)return res.send({error:'Password is required'})
 
         //if existing user
-        const existingUser = await usermodel.findOne({Email});
+        const existingUser = await usermodel.findOne({email});
         if(!existingUser){
             return res.status(404).send({
                 success:false,
                 message:"User Not register !! "
             })
         }
-        const match = await comparePassword(Password,user.Password);
+        const match = await comparePassword(password,user.password);
         if(!match){
             return res.status(404).send({
                 success:false,
@@ -64,8 +64,8 @@ export const loginController = async(req,res)=>{
             message:"User succesfully registered !!",
             user:{
                 _id:user._id,
-                Name:user.Name,
-                Email:user.Email,
+                name:user.name,
+                email:user.email,
             },
             token
         })

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 // import { Link ,useNavigate} from 'react-router-dom';
 
-const LoginPage = () => {
-    const [Name, setName] = useState('');
-    const [Password, setPassword] = useState('');
+const Login = () => {
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleUsernameChange = (e) => {
         setName(e.target.value);
@@ -18,7 +19,7 @@ const LoginPage = () => {
         e.preventDefault();
         // Add your login logic here
         try {
-            const res = await axios.post('/api/v1/auth/register',{Name,Password});
+            const res = await axios.post('/api/v1/auth/login',{name,password});
             if(res.data.success){
                 console.log("Succesfully registered!!");
             }
@@ -26,8 +27,8 @@ const LoginPage = () => {
             console.log(error);
 
         }
-        console.log('Username:', Name);
-        console.log('Password:', Password);
+        console.log('Username:', name);
+        console.log('Password:', password);
     };
 
     return (
@@ -47,7 +48,7 @@ const LoginPage = () => {
                         Create a free account
                     </Link>
                     </p>
-                    <form action="#" method="POST" className="mt-8">
+                    <form onSubmit={handleSubmit} className="mt-8">
                     <div className="space-y-5">
                         <div>
                         <label htmlFor="" className="text-base font-medium text-gray-900">
@@ -59,7 +60,7 @@ const LoginPage = () => {
                             className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="email"
                             placeholder="Email"
-                            value={Name}
+                            value={name}
                             onChange={handleUsernameChange}
                             />
                         </div>
@@ -70,28 +71,28 @@ const LoginPage = () => {
                             {" "}
                             Password{" "}
                             </label>
-                            <a
-                            href="#"
+                            <Link
+                            to={'/regiter'}
                             title=""
                             className="text-sm font-semibold text-black hover:underline"
                             >
                             {" "}
                             Forgot password?{" "}
-                            </a>
+                            </Link>
                         </div>
                         <div className="mt-2">
                             <input
                             className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                             type="password"
                             placeholder="Password"
-                            value={Password}
+                            value={password}
                             onChange={handlePasswordChange}
                             />
                         </div>
                         </div>
                         <div>
                         <button
-                            type="button"
+                            type="submit"
                             className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                             onClick={handleSubmit}
                         >
@@ -149,4 +150,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default Login;
