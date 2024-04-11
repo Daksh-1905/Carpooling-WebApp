@@ -27,8 +27,7 @@ function PickUp() {
     // const navigate = useNavigate();
     return (
         <div className='h-screen w-screen flex-col'>
-            <h1 className='h-[10%]'>FuFuCar</h1>
-            <div className='h-[90%] flex items-start  justify-center'>
+            <div className='h-[100%] flex items-start  justify-center'>
                 <div className='w-screen mt-20 flex flex-col justify-center items-center'>
                     <h2 className='text-3xl mb-6 text-sky-800 font-bold'>Pick-Up</h2>
                     <div className='flex-row h-5'>

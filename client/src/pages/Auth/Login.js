@@ -37,7 +37,8 @@ const Login = () => {
                     token: res.data.token,
                   });
                 localStorage.setItem("auth", JSON.stringify(res.data));
-                navigate("/");
+                navigate('/');
+
             }
             navigate('/');
         } catch (error) {
@@ -49,7 +50,7 @@ const Login = () => {
         function start (){
             gapi.client.init({
                 clientId:clientId,
-                scope:"",
+                scope:"profile email https://www.googleapis.com/auth/calendar.readonly",
             })
         };
         gapi.load('client:auth2',start);

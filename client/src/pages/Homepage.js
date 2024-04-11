@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import TravelInfo_1 from "./TravelInfo_1.js";
-import TravelInfo_2 from "./TravelInfo_2.js";
-import toast from "react-hot-toast";
+import React from "react";
+import TravelInfo from "./TravelInfo_1";
+import TravelInfo_2 from "./TravelInfo_2";
 
-const HomePage = (props) => {
+const HomePage = () => {
   return (
     <>
       <div>
@@ -13,17 +12,18 @@ const HomePage = (props) => {
           alt="..."
         />
       </div>
-      <TravelInfo_1 />
+      <TravelInfo />
       <div
-        className="container bg-slate-300"
-        style={{ display: "flex",justifyContent:"space-evenly", marginTop: "7vw" }}
+        className="container"
+        style={{ display: "flex",justifyContent:"space-evenly", marginTop: "5vw" }}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
+          <i className="fa-sharp fa-solid fa-coins fa-2xl"></i>
           <strong
             style={{
               fontSize: "1.2rem",
               color: "black",
-              fontWeight: "bold"
+              marginTop: "1.5vw",
             }}
           >
             Your pick of rides at low prices
@@ -32,24 +32,27 @@ const HomePage = (props) => {
             style={{
               color: "black",
               marginTop: "0.3vw",
-              fontSize: "0.8rem",
-              fontWeight: "bold"
+              fontSize:"1rem"
             }}
           >
-            No matter where you’re going, by bus or <br />
-            carpool, find the perfect ride from our wide <br />
-            range of destinations and routes at low <br />
-            prices.
+            "PocketRide" - Your go-to for affordable rides. <br />
+            With PocketRide, you can easily find and book <br />
+            rides at low prices, making commuting convenient <br />
+            and budget-friendly.
           </p>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
+          <i
+            className="fa-solid fa-check fa-2xl"
+            style={{ marginLeft: "4vw" }}
+          ></i>
           <strong
             style={{
               marginLeft: "4vw",
               fontSize: "1.2rem",
               color: "black",
-              fontWeight: "bold"
+              marginTop: "1.5vw",
             }}
           >
             Trust who you travel with
@@ -59,25 +62,29 @@ const HomePage = (props) => {
               marginLeft: "4vw",
               color: "black",
               marginTop: "0.3vw",
-              fontWeight: "bold",
-              fontSize: "0.8rem"
+              fontSize:"1rem"
             }}
           >
-            We take the time to get to know each of our <br />
-            members and bus partners. We check <br />
-            reviews, profiles and IDs, so you know who <br />
-            you’re travelling with and can book your <br />
-            ride at ease on our secure platform.
+            "TrustWheels" - Your trusted companion for <br />
+            safe and reliable ridesharing. TrustWheels ensures <br />
+            peace of mind by connecting you with trustworthy <br />
+            drivers, so you can travel with confidence knowing
+            <br />
+            you're in good hands.
           </p>
         </div>
 
-        <div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <i
+            className="fa-sharp fa-solid fa-bolt-lightning fa-2xl"
+            style={{ marginLeft: "4vw" }}
+          ></i>
           <strong
             style={{
               marginLeft: "4vw",
               fontSize: "1.2rem",
               color: "black",
-              fontWeight: "bold"
+              marginTop: "1.5vw",
             }}
           >
             Scroll, click, tap and go!
@@ -87,14 +94,13 @@ const HomePage = (props) => {
               marginLeft: "4vw",
               color: "black",
               marginTop: "0.3vw",
-              fontWeight: "bold",
-              fontSize: "0.8rem"
+              fontSize:"1rem"
             }}
           >
-            Booking a ride has never been easier! <br />
-            Thanks to our simple app powered by great <br />
-            technology, you can book a ride close to <br />
-            you in just minutes.
+            "QuickRide" - Simplifying your journey from <br/>start to finish. With
+            QuickRide, just scroll, click, <br/>tap, and you're on your way!
+            Effortlessly find rides, <br/>book them with a tap, and get going in no
+            time.
           </p>
         </div>
       </div>
@@ -107,22 +113,22 @@ const HomePage = (props) => {
           style={{ marginLeft: "10vw" }}
         />
         <div>
-          <h2 style={{ marginTop: "6vw",marginBottom:"1vh", color: "white",fontSize:"1.2rem" }}>
+          <h2 style={{ marginTop: "6vw",marginBottom:"1vh", color: "white",fontSize:"1.4rem" }}>
             Help us keep you safe from scams
           </h2>
-          <p className="slate-100" style={{ color: "white" ,fontWeight:"bold"}}>
-            "At Carpool, safety is our top priority. While we strive to ensure
-            the security <br />
+          <p style={{ color: "white",marginBottom:"1vh",fontSize:"1rem" }}>
+            "At <strong>CommuteShare</strong>, safety is our top priority. While
+            we strive to ensure the security <br />
             of our platform, we recognize the importance of being prepared for
             potential <br />
             scams. That's why we provide you with tips on how to avoid and
             report fraudulent <br />
             activities. By following our guidelines, you can help us keep you
-            safe while using<br/> our services."
+            safe while using our services."
           </p>
           <button
             type="button"
-            className="btn btn-primary learn-more-1 mt-2"
+            className="btn btn-primary learn-more-1"
             style={{
               marginLeft: "11vw",
             }}
@@ -133,15 +139,15 @@ const HomePage = (props) => {
       </div>
       <div
         className="middle-box"
-        style={{ backgroundColor: `${props.mode}`, marginTop: "2vw" }}
+        style={{ backgroundColor: "white", marginTop: "2vw" }}
       >
         <div>
           <h2
             style={{
               marginTop: "6vw",
-              color: `${props.mode === "light" ? "rgb(18, 94, 121)" : "white"}`,
+              color: "black",
               marginLeft: "14vw",
-              fontWeight: "bold"
+              fontSize:"1.3rem"
             }}
           >
             Receive €25 in Carpool Bonus!
@@ -150,11 +156,11 @@ const HomePage = (props) => {
             style={{
               color: "black",
               marginLeft: "14vw",
-              fontWeight: "bold"
+              fontSize:"1.1rem"
             }}
           >
             "Attention, drivers! Your good habits are paying off with the
-            Carpool Bonus. <br />
+            Carpool Bonus.
             Enjoy rewards for carpooling and discover the eligibility conditions
             today."
           </p>
@@ -182,25 +188,26 @@ const HomePage = (props) => {
       <div style={{ display: "flex", marginTop: "2vw", marginBottom: "2vw" }}>
         <img
           className="image-height-2"
-          src="https://cdn.blablacar.com/kairos/assets/images/bus_blablacar-3213ff1065dcd2fce2da.svg"
+          src="https://t4.ftcdn.net/jpg/00/73/46/07/360_F_73460710_VdNZ2ULA7bb2g0soKD6vaEfqrZuVmSr7.jpg"
         />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h3
             style={{
-              color: `${props.mode === "light" ? "rgb(18, 94, 121)" : "white"}`,
+              color: "black",
               marginLeft: "2vw",
               marginTop: "2vw",
+              fontSize:"1.2rem"
             }}
           >
             Discover new cities at small prices <br />
-            with Carpool buses.
+            with CommuteShare buses.
           </h3>
           <p
             style={{
               marginLeft: "2vw",
               color: "black",
-              fontWeight: "1.1rem",
-              fontWeight: "bold"
+              marginTop:"1.1vh",
+              marginBottom:"1.2vh"
             }}
           >
             "Whether it's a weekly reunion with a loved one or a monthly
@@ -220,6 +227,7 @@ const HomePage = (props) => {
               marginLeft: "8vw",
               marginRight: "6vw",
               fontWeight: "bold",
+              fontSize:"1.2rem"
             }}
           >
             Discover the Carpool Bus experience

@@ -20,6 +20,10 @@ const rideSchema = new mongoose.Schema({
     passengers: {
         type:Number,
         required:[true,"Passengers are required"]
+    },
+    email: {
+        type:String,
+        required:[true,"User Email is required"]
     }
 })
 

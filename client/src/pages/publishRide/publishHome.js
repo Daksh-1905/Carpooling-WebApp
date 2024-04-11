@@ -69,7 +69,7 @@ function PublishHome() {
                   <div className='flex flex-col ml-40 h-[320px] gap-24'>
                     <div className='flex gap-4 items-center'>
                         <button onClick={()=>{
-                                            index==0?setIndex(index):setIndex(index-1);
+                                            index===0?setIndex(index):setIndex(index-1);
                                         }}>
                             <i class="ri-arrow-left-line text-[#13B4F4] text-2xl font-bold  bg-white rounded-full p-2"></i>
                         </button>
@@ -78,7 +78,7 @@ function PublishHome() {
                             <div className='text-[#054652]  mt-4'>{list[index].name}</div>
                         </div>
                         <button onClick={()=>{
-                                            index==2?setIndex(index):setIndex(index+1);
+                                            index===2?setIndex(index):setIndex(index+1);
                                         }}>
                             <i class="ri-arrow-right-line text-[#13B4F4] text-2xl font-bold  bg-white rounded-full p-2"></i>
                         </button>

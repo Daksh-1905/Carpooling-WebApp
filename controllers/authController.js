@@ -64,6 +64,7 @@ export const loginController = async(req,res)=>{
         console.log("TOKEN GENERATION");
         const token = await JWT.sign({_id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'});
         console.log("GENERATED!!");
+        console.log(typeof(token));
         return res.status(200).send({
             success:true,
             message:"User succesfully registered !!",
@@ -118,3 +119,5 @@ export const forgotPasswordController = async(req,res)=>{
         })
     }
 }
+
+

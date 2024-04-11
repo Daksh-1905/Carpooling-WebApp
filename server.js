@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import connectDb from "./config/db.js";
 import authRoutes from './routes/authRoutes.js'
 import PublishRideRoute from "./routes/publishRideRoute.js";
+import EmailRoutes from "./routes/EmailRoutes.js";
 
 
 
@@ -30,6 +31,7 @@ app.use(morgan(('dev')));
 //Routes
 app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/publishRide',PublishRideRoute);
+app.use('/api/v1/email',EmailRoutes);
 
 
 app.get("/",(req,res)=>{

@@ -3,7 +3,6 @@ import "./publishRide.css";
 import RideContext from '../../Contexts/RideContext.js';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
-import {toast} from 'react-toastify'
 
 
 function DateTimePassengers() {
@@ -26,21 +25,34 @@ function DateTimePassengers() {
         e.preventDefault();
         try {
             const { source, destination, arrival, time, passengers } = ride;
+            let data = localStorage.getItem("auth");
+            data=JSON.parse(data);
+            const {token} = data;
+            console.log(token);
+
+            const re=await axios.post('http://localhost:8080/api/v1/email/get_email', {
+                headers: {
+                  'Authorization': `${token}`
+                }
+              });
+            console.log(re.data.email);
+            const email=re.data.email;
+
+            if(!token)return res.send({error:"Token is required"});
             console.log(source);
             console.log(destination);
             console.log(arrival);
             console.log(time);
             console.log(passengers);
-            const res = await axios.post("http://localhost:8080/api/v1/publishRide/publish", { source, destination, arrival, time, passengers });
+            const res = await axios.post("http://localhost:8080/api/v1/publishRide/publish", { source, destination, arrival, time, passengers,email });
             if (res.data.success) {
                 console.log("Ride successfully registered");
-                toast.success("Ride successfully Registerred");
                 navigate('/');
             } else {
                 console.log(res.data.message);
             }
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
     }
 
@@ -58,8 +70,7 @@ function DateTimePassengers() {
 
     return (
         <div className='h-screen w-screen flex-col'>
-            <h1 className='h-[10%] mt-10'>FuFuCar</h1>
-            <div className='h-[90%] flex items-start  justify-center'>
+            <div className='h-[100%] flex items-start  justify-center'>
                 <div className='w-screen mt-20 flex flex-col justify-center items-center'>
                     <h2 className='text-3xl mb-6 text-sky-800 font-bold'>Other Info.</h2>
                     <div className='flex flex-col gap-4 mt-6'>
