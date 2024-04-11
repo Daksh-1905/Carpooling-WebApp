@@ -24,3 +24,12 @@ export const publishRideController = async(req,res)=>{
         })
     }
 }
+
+export const getRideController = async (req, res) => {
+    try {
+      const rides = await PublishRide.find({});
+      res.status(200).json(rides);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };

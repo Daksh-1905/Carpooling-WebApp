@@ -13,6 +13,7 @@ import { useState } from "react";
 import Layout from "./Components/Layout/Layout.js";
 import { UserContextProvider } from "./Contexts/UserContext.js";
 import ForgotPassword from "./pages/Auth/ForgotPassword.js";
+import AvailableRides from "./pages/publishRide/AvailableRides.js";
 
 axios.defaults.withCredentials = true;
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="available-rides" element={<AvailableRides/>} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/publishHome" element={<PublishHome />} />
@@ -62,3 +64,5 @@ function App() {
 }
 
 export default App;
+
+
