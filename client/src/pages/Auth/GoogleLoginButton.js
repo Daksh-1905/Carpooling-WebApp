@@ -1,16 +1,18 @@
 import React from 'react'
 import { GoogleLogin } from 'react-google-login';
+import {useNavigate} from 'react-router-dom';
 
 
 
 const clientId = "1067917431696-51irs5hnbtupemu1dtjbn787p25s7ag9.apps.googleusercontent.com" ;
 const GoogleLoginButton = () => {
+    const navigate = useNavigate();
     const onSuccess =(res)=>{
         console.log("Login is Succesful ! Current User: ",res.profileObj);
-
     }
     const onFailure = (res)=>{
         console.log("Login is Failed ! ",res);
+        navigate('/login')
     }
   return (
     <div>

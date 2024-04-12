@@ -2,13 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import emailjs from "emailjs-com";
-import GoogleLoginButton from "./GoogleLoginButton";
-import GoogleLogin from "./GoogleLoginButton.js";
-import { gapi } from "gapi-script";
+//import GoogleLoginButton from "./GoogleLoginButton";
+//import GoogleLogin from "./GoogleLoginButton.js";
+//import { gapi } from "gapi-script";
 
 const Register = () => {
-  const clientId =
-    "1067917431696-51irs5hnbtupemu1dtjbn787p25s7ag9.apps.googleusercontent.com";
+  //const clientId ="1067917431696-51irs5hnbtupemu1dtjbn787p25s7ag9.apps.googleusercontent.com";
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -25,7 +24,7 @@ const Register = () => {
         { name, email, password }
       );
       console.log(res.status, res);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error);
       console.log(error.message);
@@ -46,15 +45,15 @@ const Register = () => {
         }
       );
   };
-    useEffect(() => {
-      function start() {
-        gapi.auth2.init({
-          clientId: clientId,
-          scope: "profile email https://www.googleapis.com/auth/calendar.readonly",
-        });
-      }
-      gapi.load("client:auth2", start);
-    });
+    // useEffect(() => {
+    //   function start() {
+    //     gapi.auth2.init({
+    //       clientId: clientId,
+    //       scope: "profile email https://www.googleapis.com/auth/calendar.readonly",
+    //     });
+    //   }
+    //   gapi.load("client:auth2", start);
+    // });
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -158,7 +157,7 @@ const Register = () => {
                 </div>
               </div>
             </form>
-            <GoogleLoginButton />
+            {/* <GoogleLoginButton /> */}
           </div>
         </div>
         <div className="h-full w-full flex items-start">

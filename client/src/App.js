@@ -15,6 +15,7 @@ import { UserContextProvider } from "./Contexts/UserContext.js";
 import ForgotPassword from "./pages/Auth/ForgotPassword.js";
 import AvailableRides from "./pages/publishRide/AvailableRides.js";
 
+
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -49,7 +50,7 @@ function App() {
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/publishHome" element={<PublishHome />} />
           <Route path="*" element={
-          <RideContext.Provider value={{ ride, setRide }}>
+            <RideContext.Provider value={{ ride, setRide }}>
             <Routes>
               <Route path="/pick" element={<PickUp />} />
               <Route path="/drop" element={<DropOff />} />

@@ -3,17 +3,19 @@ import { Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { token } from 'morgan';
 import { useAuth } from '../../Contexts/auth.js';
-import GoogleLogin from './GoogleLoginButton.js';
-import {gapi} from 'gapi-script';
-import GoogleLoginButton from './GoogleLoginButton.js';
 
-const clientId = "1067917431696-51irs5hnbtupemu1dtjbn787p25s7ag9.apps.googleusercontent.com" ;
+//import GoogleLogin from './GoogleLoginButton.js';
+//import {gapi} from 'gapi-script';
+//import GoogleLoginButton from './GoogleLoginButton.js';
+
+//const clientId = "1067917431696-51irs5hnbtupemu1dtjbn787p25s7ag9.apps.googleusercontent.com" ;
 const Login = () => {
 
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [auth, setAuth] = useAuth();
+
 
 
     const handleUseremailChange = (e) => {
@@ -46,15 +48,15 @@ const Login = () => {
         }
     };
 
-    useEffect(()=>{
-        function start (){
-            gapi.client.init({
-                clientId:clientId,
-                scope:"profile email https://www.googleapis.com/auth/calendar.readonly",
-            })
-        };
-        gapi.load('client:auth2',start);
-    })
+    // useEffect(()=>{
+    //     function start (){
+    //         gapi.client.getAuth({
+    //             clientId:clientId,
+    //             scope:"",
+    //         })
+    //     };
+    //     gapi.load('client:auth2',start);
+    // })
 
     return (
         <section className= "">
@@ -141,9 +143,6 @@ const Login = () => {
                         </div>
                     </div>
                     </form>
-                    <div className="mt-3 space-y-3">
-                    <GoogleLoginButton/>
-                    </div>
                 </div>
                 </div>
                 <div className="h-full w-full flex items-start">
