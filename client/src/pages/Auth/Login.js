@@ -4,11 +4,7 @@ import axios from 'axios';
 import { token } from 'morgan';
 import { useAuth } from '../../Contexts/auth.js';
 
-//import GoogleLogin from './GoogleLoginButton.js';
-//import {gapi} from 'gapi-script';
-//import GoogleLoginButton from './GoogleLoginButton.js';
 
-//const clientId = "1067917431696-51irs5hnbtupemu1dtjbn787p25s7ag9.apps.googleusercontent.com" ;
 const Login = () => {
 
     const navigate = useNavigate();
@@ -32,7 +28,7 @@ const Login = () => {
         try {
             const res = await axios.post('http://localhost:8080/api/v1/auth/login',{email,password});
             if(res.data.success){
-                console.log("Succesfully registered!!");
+                console.log("Succesfully Login!!");
                 setAuth({
                     ...auth,
                     user: res.data.user,

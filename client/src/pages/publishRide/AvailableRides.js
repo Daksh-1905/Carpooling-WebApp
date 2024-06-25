@@ -8,24 +8,30 @@ function RideCards() {
   const [source, setSource] = useState("");
   const [destination, setDestination] = useState("");
 
-  const handleBook = async (e) => {
+  const handleBook = async (driverEmail) => {
     try {
       let data = localStorage.getItem("auth");
-      data=JSON.parse(data);
-      const {token} = data;
-      console.log(token);
-      const re=await axios.post('http://localhost:8080/api/v1/email/get_email', {
-      headers: {
-            'Authorization': `${token}`
-      }
-     });
-      const driver_email = e;
-      const user_email = re.data.email;
+      data = JSON.parse(data);
+      const { token } = data;
+
+      const response = await axios.post(
+        'http://localhost:8080/api/v1/email/get_email',
+        {},
+        {
+          headers: {
+            Authorization: `${token}`
+          }
+        }
+      );
+
+      const userEmail = response.data.email;
+
       emailjs.init("l0Dv3arHmgm8CiMUW");
+
       emailjs
         .send("service_p2t1228", "template_vdow3gg", {
-          to_email: driver_email,
-          from_email: user_email,
+          to_email: driverEmail,
+          from_email: userEmail,
         })
         .then(
           function (response) {
@@ -36,20 +42,22 @@ function RideCards() {
           }
         );
     } catch (error) {
-      console.log(error);
+      console.error("Error booking ride:", error);
     }
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/v1/publishRide/get_rides")
-      .then((response) => {
+    const fetchRides = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/v1/publishRide/get_rides");
         setRides(response.data);
         setFilteredRides(response.data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching rides:", error);
-      });
+      }
+    };
+
+    fetchRides();
   }, []);
 
   useEffect(() => {
@@ -60,7 +68,7 @@ function RideCards() {
           ride.destination.toLowerCase().includes(destination.toLowerCase())
       )
     );
-  }, [source, destination]);
+  }, [source, destination, rides]);
 
   return (
     <div className="flex flex-wrap">
@@ -110,9 +118,7 @@ function RideCards() {
             <div className="p-8">
               <button
                 className="bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-gradient-to-l text-white font-bold py-2 px-4 rounded"
-                onClick={(e) => {
-                  handleBook(ride.email);
-                }}
+                onClick={() => handleBook(ride.email)}
               >
                 Book Ride
               </button>

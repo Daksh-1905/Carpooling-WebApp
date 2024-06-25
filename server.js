@@ -23,9 +23,8 @@ const app=express();
 
 
 //middleware
-app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+app.use(cors({origin:'http://localhost:3000',credentials:true}));
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:false}));
 app.use(morgan(('dev')));
 
 //Routes

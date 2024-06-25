@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import emailjs from "emailjs-com";
 //import GoogleLoginButton from "./GoogleLoginButton";
 //import GoogleLogin from "./GoogleLoginButton.js";
 //import { gapi } from "gapi-script";
@@ -15,13 +14,15 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     // Handle sign-up logic here
     e.preventDefault();
     try {
+      console.log(name);
+      console.log(email);
       const res = await axios.post(
         "http://localhost:8080/api/v1/auth/register",
-        { name, email, password }
+        { name, email, password },
+        { withCredentials: true }
       );
       console.log(res.status, res);
       navigate("/login");
@@ -29,21 +30,7 @@ const Register = () => {
       console.log(error);
       console.log(error.message);
     }
-    emailjs.init("l0Dv3arHmgm8CiMUW");
-    emailjs
-      .send("service_p2t1228", "template_lxeqo1e", {
-        to_name: name,
-        to_email: email,
-        message: "Welcome to our service!",
-      })
-      .then(
-        function (response) {
-          console.log("SUCCESS!", response.status, response.text);
-        },
-        function (error) {
-          console.error("FAILED...", error);
-        }
-      );
+
   };
     // useEffect(() => {
     //   function start() {
