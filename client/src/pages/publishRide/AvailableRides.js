@@ -15,7 +15,7 @@ function RideCards() {
       const { token } = data;
 
       const response = await axios.post(
-        'http://localhost:8080/api/v1/email/get_email',
+        'https://delbil.onrender.com/api/v1/email/get_email',
         {},
         {
           headers: {
@@ -49,7 +49,7 @@ function RideCards() {
   useEffect(() => {
     const fetchRides = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/v1/publishRide/get_rides");
+        const response = await axios.get("https://delbil.onrender.com/api/v1/publishRide/get_rides");
         setRides(response.data);
         setFilteredRides(response.data);
       } catch (error) {

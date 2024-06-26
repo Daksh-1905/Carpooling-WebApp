@@ -20,7 +20,7 @@ const Register = () => {
       console.log(name);
       console.log(email);
       const res = await axios.post(
-        "http://localhost:8080/api/v1/auth/register",
+        "https://delbil.onrender.com/api/v1/auth/register",
         { name, email, password },
         { withCredentials: true }
       );

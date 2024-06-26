@@ -26,7 +26,7 @@ const Login = () => {
         e.preventDefault();
         // Add your login logic here
         try {
-            const res = await axios.post('http://localhost:8080/api/v1/auth/login',{email,password});
+            const res = await axios.post('https://delbil.onrender.com/api/v1/auth/login',{email,password});
             if(res.data.success){
                 console.log("Succesfully Login!!");
                 setAuth({

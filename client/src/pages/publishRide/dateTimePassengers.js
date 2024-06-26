@@ -30,7 +30,7 @@ function DateTimePassengers() {
             const {token} = data;
             console.log(token);
 
-            const re=await axios.post('http://localhost:8080/api/v1/email/get_email', {
+            const re=await axios.post('https://delbil.onrender.com/api/v1/email/get_email', {
                 headers: {
                   'Authorization': `${token}`
                 }
@@ -44,7 +44,7 @@ function DateTimePassengers() {
             console.log(arrival);
             console.log(time);
             console.log(passengers);
-            const res = await axios.post("http://localhost:8080/api/v1/publishRide/publish", { source, destination, arrival, time, passengers,email });
+            const res = await axios.post("https://delbil.onrender.com/api/v1/publishRide/publish", { source, destination, arrival, time, passengers,email });
             if (res.data.success) {
                 console.log("Ride successfully registered");
                 navigate('/');

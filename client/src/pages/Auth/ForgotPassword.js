@@ -16,7 +16,7 @@ const ForgotPassword = () => {
     const handleSubmit = async(e)=>{
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:8080/api/v1/auth/forgot-password',{email,newPassword})
+            const res = await axios.post('https://delbil.onrender.com/api/v1/auth/forgot-password',{email,newPassword})
             if(res.data.success){
                 console.log("Password reset Successfully");
                 navigate('/login');
