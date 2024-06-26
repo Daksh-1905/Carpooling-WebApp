@@ -1,5 +1,5 @@
 import express from "express";
-import { getRideController, publishRideController } from "../controllers/publishRideController.js";
+import { getRideController, publishRideController } from "../../controllers/publishRideController.js";
 
 const router = express.Router();
 
