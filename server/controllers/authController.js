@@ -1,5 +1,5 @@
-import { comparePassword, hashPassword } from "../helper/authhelper.js";
-import usermodel from "../models/usermodel.js";
+import {hashPassword,comparePassword} from "../helper/authhelper.js"
+import usermodel from "../models/usermodel.js"
 import JWT from 'jsonwebtoken';
 
 

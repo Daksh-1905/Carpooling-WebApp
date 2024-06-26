@@ -3,10 +3,10 @@ import morgan from "morgan";
 import cors from 'cors'
 import bodyParser  from "body-parser";
 import dotenv from "dotenv";
-import connectDb from "./server/config/db.js";
-import authRoutes from './server/routes/authRoutes.js'
-import PublishRideRoute from "./server/routes/publishRideRoute.js";
-import EmailRoutes from "./server/routes/EmailRoutes.js";
+import connectDb from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import PublishRideRoute from "./routes/publishRideRoute.js";
+import EmailRoutes from "./routes/EmailRoutes.js";
 
 
 
