@@ -57,7 +57,7 @@ const Footer = () => {
           Terms and Conditions
         </a>
         <p style={{ marginLeft: "40vw", marginTop: "1vw", color: "grey" }}>
-          CommuteShare, 2024
+          Delbil, 2024
         </p>
         <i
           style={{ marginTop: "0.2vw", marginLeft: "0.5vw" }}
